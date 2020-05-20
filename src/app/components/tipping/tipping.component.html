@@ -1,0 +1,33 @@
+<main class="container">
+  <div class="form-group">
+    <label for="amount">Amount Of Bill</label>
+    <input type="number"
+           name="amount"
+           #amount
+           class="form-control">
+    <button (click)="calculate(amount.valueAsNumber)"
+            class="btn btn-primary">Calculate Tip at {{ tipPercentage | percent }}</button>
+  </div>
+  <div class="btn-group"
+       role="group"
+       aria-label="Basic example">
+    <button type="button"
+            class="btn btn-secondary"
+            (click)="setTipPercentage(.10)"
+            [disabled]="tipPercentage === .10">10%</button>
+    <button type="button"
+            class="btn btn-secondary"
+            (click)="setTipPercentage(.15)"
+            [disabled]="tipPercentage === .15">15%</button>
+    <button type="button"
+            class="btn btn-secondary"
+            (click)="setTipPercentage(.20)"
+            [disabled]="tipPercentage === .20">20%</button>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item">Bill Amount: <span>{{ billAmount | currency }}</span></li>
+    <li class="list-group-item">Tip Percentage: <span> {{ tipPercentage | percent }}</span> </li>
+    <li class="list-group-item">Tip Amount: <span> {{ tipAmount | currency }}</span> </li>
+    <li class="list-group-item"><strong>Total To Be Paid: <span>{{ total | currency }}</span> </strong></li>
+  </ul>
+</main>
